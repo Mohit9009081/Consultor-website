@@ -1,6 +1,11 @@
 import Aboutme from "./Components/Aboutme"
+import Contact from "./Components/Contact"
+import Footer from "./Components/Footer"
+
 import Header from "./Components/Header"
+import Programs from "./Components/Programs"
 import Services from "./Components/Services"
+import Testimonials from "./Components/Testimonials"
 
 
 const App = () => {
@@ -9,6 +14,11 @@ const App = () => {
   <Header/>
   <Aboutme/>
   <Services/>
+<Programs/>
+<Testimonials/>
+<Contact/>
+<Footer/>
+
   </>
   )
 }

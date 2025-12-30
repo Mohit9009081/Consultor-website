@@ -33,7 +33,7 @@ const Header = () => {
      <nav className="relative z-10 max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
   {/* Logo */}
   <div
-    onClick={() => handleScroll("home")}
+    // onClick={() => handleScroll("home")}
     className="flex items-center gap-2 font-semibold text-lg cursor-pointer text-white"
   >
     <FiBookOpen />

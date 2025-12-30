@@ -86,7 +86,38 @@ const Services = () => {
           ))}
         </div>
       </div>
+     
+<div className="mt-20 px-50">
+  <div className="bg-[#355f4b] rounded-[2.5rem] p-10  text-center text-white relative overflow-hidden">
+    
+    {/* Background glow */}
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_60%)]"></div>
+
+    <div className="relative z-10 max-w-3xl mx-auto"> 
+      <h3 className="text-3xl md:text-4xl font-serif">
+        Not Sure Which Service is Right for You?
+      </h3>
+
+      <p className="mt-6 text-white/80 text-lg leading-relaxed">
+        Book a free consultation call to discuss your needs and find the perfect
+        guidance program for your educational journey.
+      </p>
+
+      <button
+        onClick={() =>
+          document.getElementById("contact")?.scrollIntoView({
+            behavior: "smooth",
+          })
+        }
+        className="mt-6 inline-flex items-center gap-2 bg-[#d19a3b] hover:bg-[#c18b2f] text-black px-8 py-4 rounded-xl font-medium text-lg transition"
+      >
+        Schedule Free Consultation <FiArrowRight />
+      </button>
+    </div>
+  </div>
+</div>
     </section>
+    
   );
 };
 
@@ -123,6 +154,9 @@ const ServiceCard = ({ icon, title, description, points }) => (
       Learn More <FiArrowRight />
     </button>
   </div>
+
+
+
 );
 
 export default Services;
