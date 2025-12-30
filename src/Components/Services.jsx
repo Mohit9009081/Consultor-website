@@ -87,7 +87,7 @@ const Services = () => {
         </div>
       </div>
      
-<div className="mt-20 px-50">
+<div className="mt-20 md:px-50">
   <div className="bg-[#355f4b] rounded-[2.5rem] p-10  text-center text-white relative overflow-hidden">
     
     {/* Background glow */}
