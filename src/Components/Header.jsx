@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FiBookOpen, FiArrowRight } from "react-icons/fi";
+import { FiBookOpen, FiArrowRight, FiX, FiMenu } from "react-icons/fi";
 
 const navLinks = [
   { name: "Home", id: "home" },
@@ -12,6 +12,7 @@ const navLinks = [
 
 const Header = () => {
   const [active, setActive] = useState("home");
+  const[menuOpen,setMenuOpen] = useState(false)
 
   const handleScroll = (id) => {
     setActive(id);
@@ -29,38 +30,82 @@ const Header = () => {
       <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] `background-size:[24px_24px]` opacity-40"></div>
 
      
-      <nav className="relative z-10 max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-        <div
-          onClick={() => handleScroll("home")}
-          className="flex items-center gap-2 font-semibold text-lg cursor-pointer"
-        >
-          <FiBookOpen />
-          Hansa Vyas
-        </div>
+     <nav className="relative z-10 max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+  {/* Logo */}
+  <div
+    onClick={() => handleScroll("home")}
+    className="flex items-center gap-2 font-semibold text-lg cursor-pointer text-white"
+  >
+    <FiBookOpen />
+    Hansa Vyas
+  </div>
 
-        <ul className="hidden md:flex gap-8 text-sm">
-          {navLinks.map((link) => (
-            <li
-              key={link.id}
-              onClick={() => handleScroll(link.id)}
-              className={`cursor-pointer transition ${
-                active === link.id
-                  ? "text-yellow-400"
-                  : "text-white/80 hover:text-white"
-              }`}
-            >
-              {link.name}
-            </li>
-          ))}
-        </ul>
+  {/* Desktop Menu */}
+  <ul className="hidden md:flex gap-8 text-sm">
+    {navLinks.map((link) => (
+      <li
+        key={link.id}
+        onClick={() => handleScroll(link.id)}
+        className={`cursor-pointer transition ${
+          active === link.id
+            ? "text-yellow-400"
+            : "text-white/80 hover:text-white"
+        }`}
+      >
+        {link.name}
+      </li>
+    ))}
+  </ul>
 
-        <button
-          onClick={() => handleScroll("contact")}
-          className="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg text-sm font-medium"
+  {/* Desktop Button */}
+  <button
+    onClick={() => handleScroll("contact")}
+    className="hidden md:block bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg text-sm font-medium"
+  >
+    Book Consultation
+  </button>
+
+  {/* Mobile Menu Button */}
+  <button
+    onClick={() => setMenuOpen(!menuOpen)}
+    className="md:hidden text-white text-2xl"
+  >
+    {menuOpen ? <FiX /> : <FiMenu />}
+  </button>
+</nav>
+
+{menuOpen && (
+  <div className="md:hidden relative z-10 bg-[#1f4d3a]/95 backdrop-blur border-t border-white/10">
+    <ul className="flex flex-col px-6 py-6 gap-4 text-sm">
+      {navLinks.map((link) => (
+        <li
+          key={link.id}
+          onClick={() => {
+            handleScroll(link.id);
+            setMenuOpen(false);
+          }}
+          className={`cursor-pointer ${
+            active === link.id
+              ? "text-yellow-400"
+              : "text-white/80"
+          }`}
         >
-          Book Consultation
-        </button>
-      </nav>
+          {link.name}
+        </li>
+      ))}
+
+      <button
+        onClick={() => {
+          handleScroll("contact");
+          setMenuOpen(false);
+        }}
+        className="mt-4 bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-3 rounded-lg font-medium"
+      >
+        Book Consultation
+      </button>
+    </ul>
+  </div>
+)}
 
    
       <div className="relative z-10 max-w-5xl mx-auto px-6 pt-24 text-center">
